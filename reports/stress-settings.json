@@ -1,0 +1,38 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(podman exec quantum-job-orchestrator-postgres-1 psql -U postgres *)",
+      "Bash(podman exec quantum-job-orchestrator-pulsar-1 bin/pulsar-admin topics *)",
+      "Bash(podman restart quantum-job-orchestrator-task-manager-1)",
+      "Bash(podman kill quantum-job-orchestrator-task-manager-1)",
+      "Bash(podman start quantum-job-orchestrator-task-manager-1)",
+      "Bash(podman kill quantum-job-orchestrator-quantum-computer-*)",
+      "Bash(podman start quantum-job-orchestrator-quantum-computer-*)",
+      "Bash(podman inspect -f {{.State.Pid}} quantum-job-orchestrator-*)",
+      "Bash(podman unshare nsenter -t * -n /usr/sbin/tc qdisc *)",
+      "Bash(podman kill quantum-job-orchestrator-pulsar-1)",
+      "Bash(podman start quantum-job-orchestrator-pulsar-1)",
+      "Bash(podman kill quantum-job-orchestrator-postgres-1)",
+      "Bash(podman start quantum-job-orchestrator-postgres-1)"
+    ],
+    "deny": [
+      "Bash(sudo *)",
+      "Bash(su *)",
+      "Bash(apt*)",
+      "Bash(dpkg *)",
+      "Bash(npm *)",
+      "Bash(npx *)",
+      "Bash(pnpm *)",
+      "Bash(yarn *)",
+      "Bash(bun *)",
+      "Bash(pip*)",
+      "Bash(uv *)",
+      "Bash(cargo install *)",
+      "Bash(go install *)",
+      "Bash(wget *)",
+      "Bash(podman pull *)",
+      "Bash(podman run *)",
+      "Bash(podman build *)"
+    ]
+  }
+}

@@ -1,3 +1,4 @@
+name: quantum-job-orchestrator
 volumes:
   pgdata: {}
   pulsardata: {}
